@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="Artist")
  */
-class Artist extends Entitiy
+class Artist extends Entity
 {
     /**
      * @ORM\Id()

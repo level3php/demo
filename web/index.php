@@ -4,13 +4,9 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-
 require_once __DIR__.'/../vendor/autoload.php';
 
-$app = new Silex\Application();
+$app = require __DIR__ . '/../src/App.php';
 $app['debug'] = true;
 
-require __DIR__ . '/../src/App.php';
-
-$app->run();
-
+$app->run(\Level3\Messages\Request::createFromGlobals());

@@ -12,7 +12,7 @@ trait EntityManager {
     protected function getRepository($class)
     {
         $entity = $this->baseEntityNamespace . $class;
-        
+        var_dump(get_class($this->app['orm.em']));
         return $this->app['orm.em']->getRepository($entity);
     }
 }

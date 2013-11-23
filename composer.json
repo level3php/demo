@@ -8,7 +8,12 @@
         "silex/silex": "1.0.*@dev",
         "dflydev/doctrine-orm-service-provider": "1.0.*@dev",
         "dflydev/psr0-resource-locator-service-provider": "1.0.*@dev",
-        "cilex/console-service-provider": "*"
+        "cilex/console-service-provider": "*",
+        "level3/level3": "*",
+        "level3/silex": "*"
+    },
+    "require-dev": {
+        "behat/behat": "2.5.*@dev"
     },
     "autoload": {
         "psr-0": {
