@@ -11,7 +11,7 @@ class ControllerProvider implements ServiceProviderInterface
     public function register(Application $app)
     {
         $app['controller.index'] = $app->share(function($app) {
-            return new Controllers\Index();
+            return new Controllers\Index($app);
         });
 
         $app->get('/', 'controller.index:main');

@@ -5,7 +5,10 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
-        "silex/silex": "1.0.*@dev"
+        "silex/silex": "1.0.*@dev",
+        "dflydev/doctrine-orm-service-provider": "1.0.*@dev",
+        "dflydev/psr0-resource-locator-service-provider": "1.0.*@dev",
+        "cilex/console-service-provider": "*"
     },
     "autoload": {
         "psr-0": {
