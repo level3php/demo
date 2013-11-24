@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+
+before_script:
+  - phpenv rehash
+  - composer --no-interaction --prefer-source --dev install
+  # webserver setup
+  - php -S localhost:9091 web/index.php &
+  - sleep 3
+
+script: 
+  - vendor/bin/behat --config tests/behavior/behat.yml

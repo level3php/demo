@@ -1,0 +1,5 @@
+default:
+    context:
+        class: Level3\Behat\Context\HypermediaContext
+        parameters:
+            base_url: http://localhost:9091
