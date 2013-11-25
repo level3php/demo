@@ -33,6 +33,10 @@ class LocalLevel3Provider implements ServiceProviderInterface
                 return new Repositories\Track($level3, $app['orm.em']);
             });
 
+            $hub->registerDefinition('playlist', function(Level3 $level3) use ($app) {
+                return new Repositories\Playlist($level3, $app['orm.em']);
+            });
+
             return $hub;
         });
     }

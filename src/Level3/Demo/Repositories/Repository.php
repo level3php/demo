@@ -39,12 +39,8 @@ abstract class Repository extends BaseRepository implements Finder, Getter
 
     public function get(ParameterBag $attributes)
     {
-        $key = $this->getKey() . 'Id';
-        $entity = $this->em->find(static::ENTITY_CLASS, $attributes->get($key));
-        if (!$entity) {
-            throw new NotFound();
-        }
-
+        $entity = $this->getEntity($attributes);
+     
         return $this->entityToResource($entity);
     }
 
@@ -53,10 +49,26 @@ abstract class Repository extends BaseRepository implements Finder, Getter
     public function getEntityURI(Entity $entity)
     {
         $attributes = new ParameterBag(array(
-            $this->getKey() . 'Id' => (string) $entity->getId()
+            $this->getResourceIdVar() => (string) $entity->getId()
         ));
 
         return $this->getURI($attributes);
+    }
+
+    protected function getEntity(ParameterBag $attributes)
+    {
+        $key = $this->getResourceIdVar();
+        $entity = $this->em->find(static::ENTITY_CLASS, $attributes->get($key));
+        if (!$entity) {
+            throw new NotFound();
+        }
+
+        return $entity;
+    }
+
+    protected function getResourceIdVar()
+    {
+        return $this->getKey() . 'Id';
     }
 
     protected function getRepository($repositoryKey)

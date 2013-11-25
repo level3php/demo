@@ -5,7 +5,7 @@ namespace Level3\Demo\Repositories;
 use Level3\Resource\Resource;
 use Level3\Demo\Entities\Entity;
 
-class Track extends Repository
+class Track extends WritableRepository
 {
     const ENTITY_CLASS = 'Level3\Demo\Entities\Track';
 
