@@ -9,7 +9,12 @@ use Dflydev\Silex\Provider\Psr0ResourceLocator\Psr0ResourceLocatorServiceProvide
 use Dflydev\Silex\Provider\Psr0ResourceLocator\Composer\ComposerResourceLocatorServiceProvider;
 
 $app = new Silex\Application();
-$app->register(new Level3Provider());
+$app->register(new Level3Provider(), [
+    'level3.enable.limiter' => true,
+    'level3.enable.cors' => true,
+    'level3.enable.logger' => true
+]);
+
 $app->register(new LocalLevel3Provider());
 $app->register(new ControllerProvider());
 $app->register(new ServiceControllerServiceProvider());

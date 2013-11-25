@@ -10,7 +10,7 @@ use Level3\Repository\Getter;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Level3\Demo\Entities\Entity;
-
+use Level3\Exceptions\NotFound;
 
 abstract class Repository extends BaseRepository implements Finder, Getter
 {
@@ -26,8 +26,8 @@ abstract class Repository extends BaseRepository implements Finder, Getter
     public function find(ParameterBag $attributes, ParameterBag $queryParams)
     {
         $resources = [];
-        foreach ($this->em->getRepository(static::ENTITY_CLASS)->findBy([]) as $album) {
-            $resources[] = $this->entityToResource($album);
+        foreach ($this->em->getRepository(static::ENTITY_CLASS)->findBy([]) as $entity) {
+            $resources[] = $this->entityToResource($entity);
         }
         
         $resource = new Resource();
@@ -40,9 +40,12 @@ abstract class Repository extends BaseRepository implements Finder, Getter
     public function get(ParameterBag $attributes)
     {
         $key = $this->getKey() . 'Id';
-        $album = $this->em->find(static::ENTITY_CLASS, $attributes->get($key));
+        $entity = $this->em->find(static::ENTITY_CLASS, $attributes->get($key));
+        if (!$entity) {
+            throw new NotFound();
+        }
 
-        return $this->entityToResource($album);
+        return $this->entityToResource($entity);
     }
 
     abstract public function entityToResource(Entity $entity);
