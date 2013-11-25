@@ -5,9 +5,9 @@ php:
   - 5.5
 
 before_script:
+  - /bin/bash ./.travis.sh
   - phpenv rehash
   - composer --no-interaction --prefer-source --dev install
-  - /bin/bash ./.travis.sh
   # webserver setup
   - php -S localhost:9091 web/index.php &
   - sleep 3
