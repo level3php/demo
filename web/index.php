@@ -4,7 +4,15 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-require_once __DIR__.'/../vendor/autoload.php';
+$local = __DIR__.'/../vendor/autoload.php';
+if (file_exists($local)) {
+    require_once $local;
+}
+
+$parent = __DIR__.'/../../../../vendor/autoload.php';
+if (file_exists($parent)) {
+    require_once $parent;
+}
 
 $app = require __DIR__ . '/../src/App.php';
 $app['debug'] = true;
