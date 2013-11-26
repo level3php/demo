@@ -4,6 +4,7 @@ namespace Level3\Demo\Repositories;
 
 use Level3\Resource\Resource;
 use Level3\Demo\Entities\Entity;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Playlist extends WritableRepository
 {
@@ -18,5 +19,8 @@ class Playlist extends WritableRepository
         return $resource;
     }
 
-
+    public function patch(ParameterBag $attributes, ParameterBag $data)
+    {
+        throw new \RuntimeException('Just sample example of a Exception. :D');
+    }
 }

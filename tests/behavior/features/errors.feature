@@ -56,3 +56,13 @@ Feature: Testing the error handling
             And the "Content-Type" header is equal to "application/hal+json"
             And the "Access-Control-Allow-Origin" header is equal to "*"
             And the "X-RateLimit-Limit" header is equal to "1000"
+
+    Scenario:
+        Given that I want to patch a URL throwing an exception
+            And I have a "Content-Type" header equal to "application/json"
+            And I have "name" property equal to "foo"
+        When I request "/playlist/1"
+        Then the response status code should be 500
+            And the "Content-Type" header is equal to "application/hal+json"
+            And the "Access-Control-Allow-Origin" header is equal to "*"
+            And the "X-RateLimit-Limit" header is equal to "1000"
