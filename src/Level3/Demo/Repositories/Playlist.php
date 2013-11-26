@@ -6,6 +6,9 @@ use Level3\Resource\Resource;
 use Level3\Demo\Entities\Entity;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+/**
+ * Playlist, describes playlist with name, this is a demo from a writable repository but the patch method throw a exception to demostrate the error handling.
+ */
 class Playlist extends WritableRepository
 {
     const ENTITY_CLASS = 'Level3\Demo\Entities\Playlist';

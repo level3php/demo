@@ -1,7 +1,6 @@
 <?php
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
-use Level3\Demo\Providers\ControllerProvider;
 use Level3\Demo\Providers\LocalLevel3Provider;
 use Level3\Silex\ServiceProvider as Level3Provider;
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
@@ -16,7 +15,6 @@ $app->register(new Level3Provider(), [
 ]);
 
 $app->register(new LocalLevel3Provider());
-$app->register(new ControllerProvider());
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new Psr0ResourceLocatorServiceProvider);
 $app->register(new ComposerResourceLocatorServiceProvider);

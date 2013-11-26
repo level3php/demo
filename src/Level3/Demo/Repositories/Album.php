@@ -5,6 +5,10 @@ namespace Level3\Demo\Repositories;
 use Level3\Resource\Resource;
 use Level3\Demo\Entities\Entity;
 
+
+/**
+ * Album, describes album with name, artist and tracks, this is a demo from a simple repository
+ */
 class Album extends Repository
 {
     const ENTITY_CLASS = 'Level3\Demo\Entities\Album';
